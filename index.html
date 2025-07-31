@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carousel Rich Media</title>
+  <title>Carousel Rich Media Final</title>
   <style>
     body {
       margin: 0;
@@ -25,7 +25,7 @@
       position: absolute;
       top: 0; left: 0;
       opacity: 0;
-      transition: opacity 0.8s ease-in-out;
+      transition: opacity 0.5s ease-in-out;
       background-size: cover;
       background-position: center;
       cursor: pointer;
@@ -60,6 +60,7 @@
       font-size: 20px;
       width: 30px; height: 30px;
       cursor: pointer;
+      z-index: 10;
     }
     #prev { left: 5px; }
     #next { right: 5px; }
@@ -67,9 +68,9 @@
 </head>
 <body>
   <div id="carousel">
-    <div class="slide active" style="background-image:url('img1.jpg');" data-link="https://example.com/page1"></div>
-    <div class="slide" style="background-image:url('img2.jpg');" data-link="https://example.com/page2"></div>
-    <div class="slide" style="background-image:url('img3.jpg');" data-link="https://example.com/page3"></div>
+    <div class="slide active" style="background-image:url('slide1.png');" data-link="https://example.com/page1"></div>
+    <div class="slide" style="background-image:url('slide2.png');" data-link="https://example.com/page2"></div>
+    <div class="slide" style="background-image:url('slide3.png');" data-link="https://example.com/page3"></div>
     
     <button class="nav-btn" id="prev">&#10094;</button>
     <button class="nav-btn" id="next">&#10095;</button>
@@ -86,6 +87,7 @@
     var dots = document.querySelectorAll(".dot");
     var current = 0;
     var total = slides.length;
+    var startX = 0, endX = 0;
 
     function showSlide(index) {
       slides[current].classList.remove("active");
@@ -108,6 +110,20 @@
 
     // 自動輪播
     setInterval(() => { showSlide(current + 1); }, 4000);
+
+    // 手機觸控滑動
+    document.getElementById("carousel").addEventListener("touchstart", function(e) {
+      startX = e.touches[0].clientX;
+    });
+
+    document.getElementById("carousel").addEventListener("touchend", function(e) {
+      endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) {
+        showSlide(current + 1); // 左滑
+      } else if (endX - startX > 50) {
+        showSlide(current - 1); // 右滑
+      }
+    });
   </script>
 </body>
 </html>
