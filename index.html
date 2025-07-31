@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="ad.size" content="width=300,height=250">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Carousel Rich Media</title>
+  <title>3D Carousel Rich Media (Fixed)</title>
   <style>
     body {
       margin: 0;
@@ -19,22 +19,21 @@
       width: 300px;
       height: 250px;
       position: relative;
-      perspective: 1000px;
+      perspective: 600px;
       overflow: hidden;
     }
     .slide {
-      width: 80%;
+      width: 70%;
       height: 80%;
       position: absolute;
       top: 10%;
-      left: 10%;
+      left: 15%;
       background-size: cover;
       background-position: center;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
       cursor: pointer;
-      opacity: 0.6;
-      transform: scale(0.8) translateX(0) rotateY(0deg);
+      opacity: 0.5;
       transition: transform 0.8s ease, opacity 0.8s ease;
     }
     .slide.active {
@@ -43,11 +42,11 @@
       z-index: 3;
     }
     .slide.left {
-      transform: scale(0.8) translateX(-120px) rotateY(30deg);
+      transform: scale(0.7) translateX(-140px) rotateY(45deg);
       z-index: 2;
     }
     .slide.right {
-      transform: scale(0.8) translateX(120px) rotateY(-30deg);
+      transform: scale(0.7) translateX(140px) rotateY(-45deg);
       z-index: 2;
     }
     .controls {
@@ -83,9 +82,9 @@
 </head>
 <body>
   <div id="carousel">
-    <div class="slide active" style="background-image:url('slide1.jpg');" data-link="https://example.com/page1"></div>
-    <div class="slide right" style="background-image:url('slide2.jpg');" data-link="https://example.com/page2"></div>
-    <div class="slide left" style="background-image:url('slide3.jpg');" data-link="https://example.com/page3"></div>
+    <div class="slide active" style="background-image:url('slide1.jpg');" data-link="https://www.avividai.com/"></div>
+    <div class="slide" style="background-image:url('slide2.jpg');" data-link="https://www.avividai.com/"></div>
+    <div class="slide" style="background-image:url('slide3.jpg');" data-link="https://www.avividai.com/"></div>
 
     <div class="controls">
       <span class="dot active"></span>
@@ -129,6 +128,9 @@
     document.querySelector(".cta").onclick = () => window.open(slides[current].getAttribute("data-link"), "_blank");
 
     setInterval(() => { showSlide(current + 1); }, 3000);
+
+    // 初始化，顯示三張
+    updateSlides();
 
     // 手機觸控滑動
     var startX = 0;
