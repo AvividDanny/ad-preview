@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Advenue Preview - Father's Day Carousel</title>
+    <script type="text/javascript" src="https://www.advenueplatform.com/html/adpreview/core.js"></script>
+    <link rel="stylesheet" href="https://www.advenueplatform.com/html/styles/theme_v2.0/reset.css">
+    <link rel="stylesheet" href="https://www.advenueplatform.com/html/scripts/bootstrap3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.advenueplatform.com/html/styles/theme_v2.0/layout_v2.0.css">
+    <link rel="stylesheet" href="https://www.advenueplatform.com/html/styles/theme_v2.0/default.css">
+    <link rel="stylesheet" href="https://www.advenueplatform.com/html/styles/theme_v2.0/common.css">
+    <style>
+        #div_Rectangle {
+            width: 300px;
+            height: 250px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="div_Rectangle">
+        <div class="ad_space">
+            <img src="./test_300_250.png" class="carousel-img" onclick="window.open(clickTag, '_blank');" />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var clickTag = "https://www.example.com";
+
+        // 注入 Innity SDK Carousel 配置
+        customAd_10_1 = {
+            breakIframe: true,
+            carouselImages: [
+                { url: './test_300_250.png', clickTag: clickTag },
+                { url: './test_300_250.png', clickTag: clickTag },
+                { url: './test_300_250.png', clickTag: clickTag }
+            ]
+        };
+    </script>
+
+    <script type="text/javascript" src="https://www.advenueplatform.com/html/scripts/init_scripts.js"></script>
+    <script type="text/javascript" src="https://www.advenueplatform.com/html/scripts/innity_rm_testkitV4.js"></script>
+</body>
+</html>
